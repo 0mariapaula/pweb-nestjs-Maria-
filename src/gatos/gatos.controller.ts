@@ -8,21 +8,6 @@ export class GatosController {
 
     constructor(private gatosService: GatosService) {}
 
-    private readonly gatos: Gato[] = [
-        {
-            id: 1,
-            nome: "Black",
-            raca: "Mestiça",
-            idade: 2
-        },
-        {
-            id: 2,
-            nome: "Garfield",
-            raca: "Desconhecida",
-            idade: 45
-        }
-    ];
-
     @Get()
     findAll(): Gato[] {
         return this.gatosService.findAll();
