@@ -30,7 +30,7 @@ export class GatosController {
 
     @Get(':id')
     findOne(@Param('id') id : string, @Res() response: Response) {
-        const gato = this.gatos.find((gato) => gato.id === Number(id));
+        const gato = this.gatosService.findOne(Number(id));
         if(gato){
             response.status(HttpStatus.OK).json(gato);
         } else {

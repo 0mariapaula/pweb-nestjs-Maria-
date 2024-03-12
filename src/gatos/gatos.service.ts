@@ -23,4 +23,8 @@ export class GatosService {
         return this.gatos;
     }
 
+    findOne(id: number): Gato | undefined {
+        return this.gatos.find((gato) => gato.id === id);
+    }
+
 }
