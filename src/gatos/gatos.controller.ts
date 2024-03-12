@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { Gato } from 'src/gato/gato.interface';
 import { GatosService } from './gatos.service';
@@ -29,8 +29,8 @@ export class GatosController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id : string, @Res() response: Response) {
-        const gato = this.gatosService.findOne(Number(id));
+    findOne(@Param('id', ParseIntPipe) id : number, @Res() response: Response) {
+        const gato = this.gatosService.findOne(id);
         if(gato){
             response.status(HttpStatus.OK).json(gato);
         } else {
@@ -39,8 +39,8 @@ export class GatosController {
     }
 
     @Delete(':id')
-    delete(@Param('id') id: string, @Res() response: Response) {
-        const index = this.gatos.findIndex((gato) => gato.id === Number(id));
+    delete(@Param('id', ParseIntPipe) id: number, @Res() response: Response) {
+        const index = this.gatos.findIndex((gato) => gato.id === id);
         if(index >= 0){
             this.gatos.splice(index, 1);
             response.status(HttpStatus.NO_CONTENT).send(); 
@@ -56,8 +56,8 @@ export class GatosController {
     }
 
     @Put(':id')
-    update(@Param('id') id : string, @Body() gato: Gato, @Res() response: Response) {
-        const index = this.gatos.findIndex((gato) => gato.id === Number(id));
+    update(@Param('id', ParseIntPipe) id : number, @Body() gato: Gato, @Res() response: Response) {
+        const index = this.gatos.findIndex((gato) => gato.id === id);
         if(index >= 0){
             this.gatos.splice(index, 1, gato);
             response.status(HttpStatus.OK).json(gato);
