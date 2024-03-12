@@ -57,9 +57,9 @@ export class GatosController {
 
     @Put(':id')
     update(@Param('id', ParseIntPipe) id : number, @Body() gato: Gato, @Res() response: Response) {
-        const index = this.gatos.findIndex((gato) => gato.id === id);
+        const index = this.gatosService.findIndexById(id);
         if(index >= 0){
-            this.gatos.splice(index, 1, gato);
+            this.gatosService.updateByIndex(index, gato);
             response.status(HttpStatus.OK).json(gato);
         } else {
             response.status(HttpStatus.NOT_FOUND).send();
