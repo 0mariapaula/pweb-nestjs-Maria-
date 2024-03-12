@@ -35,4 +35,8 @@ export class GatosService {
         this.gatos.splice(index, 1);
     }
 
+    create(gato: Gato) {
+        this.gatos.push(gato);
+    }
+
 }
