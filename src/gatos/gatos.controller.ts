@@ -40,9 +40,9 @@ export class GatosController {
 
     @Delete(':id')
     delete(@Param('id', ParseIntPipe) id: number, @Res() response: Response) {
-        const index = this.gatos.findIndex((gato) => gato.id === id);
+        const index = this.gatosService.findIndexById(id);
         if(index >= 0){
-            this.gatos.splice(index, 1);
+            this.gatosService.deleteByIndex(index);
             response.status(HttpStatus.NO_CONTENT).send(); 
         } else {
             response.status(HttpStatus.NOT_FOUND).send();

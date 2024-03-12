@@ -27,4 +27,12 @@ export class GatosService {
         return this.gatos.find((gato) => gato.id === id);
     }
 
+    findIndexById(id: number) : number {
+        return this.gatos.findIndex((gato) => gato.id === id);
+    }
+
+    deleteByIndex(index: number) {
+        this.gatos.splice(index, 1);
+    }
+
 }
