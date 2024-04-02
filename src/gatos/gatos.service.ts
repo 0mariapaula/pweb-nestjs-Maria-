@@ -32,12 +32,16 @@ export class GatosService {
         return this.gatosRepository.findOneBy({id})
     }
 
-    findIndexById(id: number) : number {
-        return this.gatos.findIndex((gato) => gato.id === id);
+    existsBy(id: number) : Promise<boolean> {
+        return this.gatosRepository.existsBy({id});
     }
 
-    deleteByIndex(index: number) {
-        this.gatos.splice(index, 1);
+    async delete(id: number) {
+        await this.gatosRepository.delete(id);
+    }
+
+    findIndexById(id: number) : number {
+        return this.gatos.findIndex((gato) => gato.id === id);
     }
 
     create(gato: GatoInterface) {

@@ -24,10 +24,10 @@ export class GatosController {
     }
 
     @Delete(':id')
-    delete(@Param('id', ParseIntPipe) id: number, @Res() response: Response) {
-        const index = this.gatosService.findIndexById(id);
-        if(index >= 0){
-            this.gatosService.deleteByIndex(index);
+    async delete(@Param('id', ParseIntPipe) id: number, @Res() response: Response) {
+        const found = await this.gatosService.existsBy(id);
+        if(found){
+            this.gatosService.delete(id);
             response.status(HttpStatus.NO_CONTENT).send(); 
         } else {
             response.status(HttpStatus.NOT_FOUND).send();
