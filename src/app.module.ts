@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GatosController } from './gatos/gatos.controller';
-import { GatosService } from './gatos/gatos.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Gato } from './gatos/gato.entity';
 import { GatosModule } from './gatos/gatos.module';
