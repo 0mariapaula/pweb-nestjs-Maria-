@@ -28,8 +28,8 @@ export class GatosService {
         return this.gatosRepository.find();
     }
 
-    findOne(id: number): GatoInterface | undefined {
-        return this.gatos.find((gato) => gato.id === id);
+    findOne(id: number): Promise<Gato | null> {
+        return this.gatosRepository.findOneBy({id})
     }
 
     findIndexById(id: number) : number {
