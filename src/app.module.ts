@@ -5,6 +5,7 @@ import { GatosController } from './gatos/gatos.controller';
 import { GatosService } from './gatos/gatos.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Gato } from './gatos/gato.entity';
+import { GatosModule } from './gatos/gatos.module';
 
 @Module({
   imports: [
@@ -18,9 +19,10 @@ import { Gato } from './gatos/gato.entity';
       entities: [Gato],
       synchronize: true,
       ssl: true
-    }),    
+    }),
+    GatosModule,    
   ],
-  controllers: [AppController, GatosController],
-  providers: [AppService, GatosService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
