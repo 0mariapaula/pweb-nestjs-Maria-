@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { GatosController } from './gatos/gatos.controller';
 import { GatosService } from './gatos/gatos.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Gato } from './gatos/gato.entity';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'banco_teste_q7hk_user',
       password: '123',
       database: 'banco_teste_q7hk',
-      entities: [],
+      entities: [Gato],
       synchronize: true,
       ssl: true
     }),    
