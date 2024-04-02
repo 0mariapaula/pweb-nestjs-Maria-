@@ -24,8 +24,8 @@ export class GatosService {
 
     constructor(@InjectRepository(Gato) private gatosRepository: Repository<Gato>) {}
 
-    findAll(): GatoInterface[] {
-        return this.gatos;
+    findAll(): Promise<Gato[]> {
+        return this.gatosRepository.find();
     }
 
     findOne(id: number): GatoInterface | undefined {

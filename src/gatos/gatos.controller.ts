@@ -9,7 +9,7 @@ export class GatosController {
     constructor(private gatosService: GatosService) {}
 
     @Get()
-    findAll(): Gato[] {
+    findAll(): Promise<Gato[]> {
         return this.gatosService.findAll();
     }
 
